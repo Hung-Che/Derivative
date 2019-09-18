@@ -6,12 +6,11 @@ public class Derivative{
         int l = t.length();
         String coe = "";
         for(int i = 0; i < l; i++){
-            if(!t.substring(i, i+1).equals("x")||
+            if(!t.substring(i, i+1).equals("x")&&
             !t.substring(i, i+1).equals("*")){
                 coe = coe + t.substring(i,i+1);
                 
-            }else if(t.substring(i, i+1).equals("x")||
-            t.substring(i, i+1).equals("*")){
+            }else{
                 return coe;
             }
             
