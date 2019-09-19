@@ -1,5 +1,5 @@
-public class Derivative{
-    public Derivative(String t){
+public class Powerrule{
+    public Power(String t){
         t = "";
     }
     public static String getDev(String t){
