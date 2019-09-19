@@ -1,4 +1,4 @@
-public class Powerrule{
+public class Power{
     public Power(String t){
         t = "";
     }
