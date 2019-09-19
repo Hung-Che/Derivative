@@ -11,23 +11,24 @@ public class Derivative{
         }else if(b-1==0){
             ret = a*b + "" ;
         }else if(b-1==1){
-            ret = a*b + " * x ";
+            ret = a*b + "*x";
         }else{
-            ret = a*b + " * x ^ " + (b - 1);
+            ret = a*b + "*x^" + (b - 1);
         }
         return ret;
     }
     public static double getCoeff(String t){
         int l = t.length();
         String coe = "";
+        String a = "";
+        String b = "";
         if(t.indexOf("x")!=0){
-            for(int i = 0; i < l; i++){
-                if (!t.substring(i, i + 1).equals("x") &&
-                    !t.substring(i, i + 1).equals("*")) {
-                    coe = coe + t.substring(i, i + 1);
-                } else {
-                    break;
-                }
+            if(t.indexOf("/")<t.indexOf("x")&&t.indexOf("/")>0){
+                a = t.substring(t.indexOf("(")+1,t.indexOf("/"));
+                b = t.substring(t.indexOf("/")+1,t.indexOf(")"));
+                coe = "" + Double.parseDouble(a) / Double.parseDouble(b);
+            }else{
+                coe = t.substring(0,t.indexOf("x"));
             }
         }else if(t.indexOf("x")==0){
             coe = "1";
@@ -37,19 +38,22 @@ public class Derivative{
     public static double getExpon(String t){
         int l = t.length();
         String exp = "";
+        String a = "";
+        String b = "";
         if(t.indexOf("^")==-1&&t.indexOf("x")==-1){
             exp = "0";
         }else if(t.indexOf("^")==-1&&t.indexOf("x")!=-1){
             exp = "1";
+        }else if(t.lastIndexOf("/")>t.indexOf("^")&&t.indexOf("^")>0){
+            a = t.substring(t.lastIndexOf("(")+1,t.lastIndexOf("/"));
+            b = t.substring(t.lastIndexOf("/")+1,t.lastIndexOf(")"));
+            exp = "" + Double.parseDouble(a) / Double.parseDouble(b);
         }else{
-            for(int j = l; j > 0; j--){
-                if(!t.substring(j-1,j).equals("^")){
-                    exp = t.substring(j-1, j) + exp;
-                }else{
-                    break;
-                }
-            }
+            exp = t.substring(t.indexOf("^")+1, t.length());
         }
         return Double.parseDouble(exp);
+    }
+    public static double calculate(double num, double coe, double exp){
+        return coe * Math.pow(num, exp);
     }
 }
