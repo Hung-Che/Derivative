@@ -1,8 +1,5 @@
 public class Power{
-    public Power(String t){
-        t = "";
-    }
-    public static String getDev(String t){
+    public String getDev(String t){
         String ret = "";
         double a = getCoeff(t);
         double b = getExpon(t);
@@ -17,7 +14,7 @@ public class Power{
         }
         return ret;
     }
-    public static double getCoeff(String t){
+    public double getCoeff(String t){
         int l = t.length();
         String coe = "";
         String a = "";
@@ -35,7 +32,7 @@ public class Power{
         }
         return Double.parseDouble(coe);
     }    
-    public static double getExpon(String t){
+    public double getExpon(String t){
         int l = t.length();
         String exp = "";
         String a = "";
@@ -53,7 +50,7 @@ public class Power{
         }
         return Double.parseDouble(exp);
     }
-    public static double calculate(double num, double coe, double exp){
+    public double calculate(double num, double coe, double exp){
         return coe * Math.pow(num, exp);
     }
 }
