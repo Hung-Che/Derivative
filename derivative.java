@@ -1,3 +1,5 @@
-public class derivative extends Power{
-  
+public class derivative{
+	public String term(String t){
+
+	}
 }
