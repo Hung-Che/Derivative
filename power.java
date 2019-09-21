@@ -1,4 +1,13 @@
 public class Power{
+    public String getDev(String t, int n){
+        String a = t;
+        String b = "";
+        for(int i = 1; i < n; i++){
+            b = getDev(a);
+            a = b; //this one might be incorrect since this set a equals to be meaning that a is b. 
+        }
+        return b;
+    }
     public String getDev(String t){
         String ret = "";
         double a = getCoeff(t);
@@ -49,8 +58,5 @@ public class Power{
             exp = t.substring(t.indexOf("^")+1, t.length());
         }
         return Double.parseDouble(exp);
-    }
-    public double calculate(double num, double coe, double exp){
-        return coe * Math.pow(num, exp);
     }
 }
