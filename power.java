@@ -2,7 +2,7 @@ public class Power{
     public String getDev(String t, int n){
         String a = t;
         String b = "";
-        for(int i = 1; i < n; i++){
+        for(int i = 0; i < n; i++){
             b = getDev(a);
             a = b; //this one might be incorrect since this set a equals to be meaning that a is b. 
         }
@@ -12,14 +12,15 @@ public class Power{
         String ret = "";
         double a = getCoeff(t);
         double b = getExpon(t);
+        String coef = (a*b>0)?("+"+a*b):(""+a*b); 
         if(a*b==0){
             ret = "0";
         }else if(b-1==0){
-            ret = a*b + "" ;
+            ret = coef + "" ;
         }else if(b-1==1){
-            ret = a*b + "*x";
+            ret = coef + "*x";
         }else{
-            ret = a*b + "*x^" + (b - 1);
+            ret = coef + "*x^" + (b - 1);
         }
         return ret;
     }
@@ -28,15 +29,15 @@ public class Power{
         String coe = "";
         String a = "";
         String b = "";
-        if(t.indexOf("x")!=0){
+        if(t.indexOf("*x")!=-1){
             if(t.indexOf("/")<t.indexOf("x")&&t.indexOf("/")>0){
                 a = t.substring(t.indexOf("(")+1,t.indexOf("/"));
                 b = t.substring(t.indexOf("/")+1,t.indexOf(")"));
                 coe = "" + Double.parseDouble(a) / Double.parseDouble(b);
             }else{
-                coe = t.substring(0,t.indexOf("x"));
+                coe = t.substring(0,t.indexOf("*x"));
             }
-        }else if(t.indexOf("x")==0){
+        }else if(t.indexOf("*x")==-1){
             coe = "1";
         }
         return Double.parseDouble(coe);
