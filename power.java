@@ -4,7 +4,7 @@ public class Power{
         String b = "";
         for(int i = 0; i < n; i++){
             b = getDev(a);
-            a = b; //this one might be incorrect since this set a equals to be meaning that a is b. 
+            a = b;  
         }
         return b;
     }
