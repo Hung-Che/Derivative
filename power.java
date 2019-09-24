@@ -29,15 +29,16 @@ public class Power{
         String coe = "";
         String a = "";
         String b = "";
-        if(t.indexOf("*x")!=-1){
-            if(t.indexOf("/")<t.indexOf("x")&&t.indexOf("/")>0){
+        if(t.indexOf("*x")!=-1||t.indexOf("x")!=-1){
+            int index = (t.indexOf("*x")<0)?t.indexOf("x"):t.indexOf("*x");
+            if(t.indexOf("/")<index&&t.indexOf("/")>0){
                 a = t.substring(t.indexOf("(")+1,t.indexOf("/"));
                 b = t.substring(t.indexOf("/")+1,t.indexOf(")"));
                 coe = "" + Double.parseDouble(a) / Double.parseDouble(b);
             }else{
-                coe = t.substring(0,t.indexOf("*x"));
+                coe = t.substring(0,index);
             }
-        }else if(t.indexOf("*x")==-1){
+        }else if(t.indexOf("*x")==-1||t.indexOf("x")==-1){
             coe = "1";
         }
         return Double.parseDouble(coe);
